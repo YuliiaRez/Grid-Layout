@@ -1,12 +1,8 @@
-/*@import './reset.css';*/
-/*@import 'card.css';*/
-/*@import 'grid.css';*/
 *{
   box-sizing: border-box;
   margin: 0;
   padding: 0;
 }
-/* Core Styles */
 
  body {
     margin: 0;
@@ -35,6 +31,10 @@ p {
   margin: 0;
   padding: 1em 0;
 }
+h1{
+  padding-top: 100px;
+  padding-bottom: 0;
+}
 .btn {
   display: inline-block;
   background: #333;
@@ -51,103 +51,96 @@ p {
 
 .headerContainer{
   grid-area: header;
-  display: grid;
-  grid-template-columns: 1fr repeat(2, minmax(auto, 25em)) 1fr;
   min-height: 450px;
   position: relative;
 }
 .headerContent{
   position: absolute;
   background: #333 url(../images/imageBG.png);
- background-position: center;
+  background-position: center;
   background-repeat: no-repeat;
   background-size: cover;
   width: 100%;
-  height: 100%;
+  height: 450px;
   z-index: -1;
-  /*opacity: 0.4;*/
-  text-align: center;
+  opacity: 0.4;
 }
 .mainContainer{
   grid-area: main;
 }
-.section-a{
+.sectionA{
   background: #eaeaea;
   color: #333;
   padding-bottom: 2em;
 }
 @media (min-width: 700px)  { 
-.content-text>p{
+.contentText>p{
   column-count: 2;
   column-gap: 30px;
 }
 }
 
-.mainContainerB{
-    padding: 2em 1em 1em;
+#sectionB{
+    padding: 1em 0;
 }
 @media (min-width: 700px){
-.cardContainer, .footer{
+.cardContainer{
   display: grid;
-  grid-template: 1fr/1fr repeat(3, minmax( 150px, 300px)) 1fr; 
+  grid-template: 1fr/1fr repeat(3, minmax( 150px, auto)) 1fr; 
+  grid-column-gap: 20px;
   justify-content: center;
-  grid-column-gap: 3%;
+
 }
+.card:first-child{
+  grid-column-start:2;
+}
+
 }
 .cardContainer{
-    margin-bottom: 1em;
+    margin: 1em auto 1em auto;
     background: #333;
     color: #333;
+    align-items: center;
+    justify-content: center;
+
 }
 
 
 .card{
     background: #fff;
     color: #333;
-    max-width: 450px;
-    height: auto;
+    max-width: 100%;
+    height: 100%;
     margin-bottom: 15px;
 
 }
-.card:first-child{
-  grid-column-start:2;
-  display: grid;
-  gap: 10px;
-  grid-auto-rows: row;
-  
-}
 .cardImage{
   width: 100%;
-  height: 130px;
+  height: auto;
   overflow: hidden;
-  position: relative;
 }
 img{
+  display: block;
   width: 100%;
-  height: 100%;
-  object-fit: cover;
-  position: absolute;
-  top: 0;
-  left: 0;
- /* width: 100%;
-  height: auto;
-  object-fit: cover;*/
+  height: auto; 
 }
-
- .section-c {
+.cardContent{
+  padding: 1.5em;
+}
+ .sectionC {
   background: #fff;
   color: #333;
   padding: 2em;}
   
-  .section-d .box:first-child {
+  .sectionD .box:first-child {
     background: #2690d4;
   }
-  .section-d .box {
+  .sectionD .box {
     padding: 2em;
     color: #fff;
   }
   @media (min-width:700px) {
-    .section-d{
+    .sectionD {
       display: grid;
       grid-template: 1fr/1fr 1fr;
 
