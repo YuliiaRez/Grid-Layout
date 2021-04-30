@@ -13,9 +13,10 @@
     line-height: 1.5;
     text-align: center;
   }
+  /*- по примеру не предусмотрено, что футер бедут прибит к низу. Обратите внимание на высоту враппера.*/
 .wrapper{
   display: grid;
-  min-height: 100vh;
+  /*min-height: 100vh;*/
 	grid-template: minmax(100px, auto) 1fr minmax(70px, auto) / 1fr;
   grid-template-areas:
   'header'
@@ -68,7 +69,29 @@ h1{
 .mainContainer{
   grid-area: main;
 }
-.sectionA{
+/*- вторую сверху секцию с колонками было бы неплохо ограничить по ширине, колонки на широком экране некрасиво расползаются и превращаются в одну левую. 
+Концептуальное пожелание: Было бы неплохо исселовать поведение образца при масштабировании и сужении.  Можно заметить, что там контент в 1-4 секциях ограничен 992 или 120 пикселями по ширине. Тогда все эти блоки можно сделать грид-контейнерами и распределить пространство по ширине по одной части пустой по бокам (похоже как в кардКонтейнере), а средней ограничить ширину minmax`ом.*/
+.sectionA {
+  background: #eaeaea;
+  color: #333;
+  padding-bottom: 2em;
+}
+
+@media (min-width: 700px){
+.contentText {
+    display: grid;
+    grid-template-columns: 1fr repeat(2, minmax(auto, 400px)) 1fr;
+}
+.contentText>p{
+  grid-column: 2/span 2;
+  column-count: 2;
+  column-fill: balance;
+  column-gap: 30px;
+  padding: 0 1em;
+  }
+
+}
+/*.sectionA{
   background: #eaeaea;
   color: #333;
   padding-bottom: 2em;
@@ -76,12 +99,13 @@ h1{
 @media (min-width: 700px)  { 
 .contentText>p{
   column-count: 2;
-  column-gap: 30px;
+  column-gap: 30px;*/
 }
 }
-
+/*- непонятная серая полоса над футером. */
+/*это был лишний паддинг в sectionB*/
 #sectionB{
-    padding: 1em 0;
+    padding: 1em 0 0 0;
 }
 @media (min-width: 700px){
 .cardContainer{
@@ -156,8 +180,13 @@ img{
   color: #fff;
   text-align: center;
 }
+
+   /*- обратите внимание на футер, там блоки занимают не по половине ширины, как в примере задумано, а иначе.- Неправильный синтаксис был и медиа не работал вообще.*/
+
 @media (min-width: 700px){
 .footer {
     display: grid;
     grid-template-columns: repeat(2, minmax(auto, 25em));
+    justify-content: center;
   }
+}
